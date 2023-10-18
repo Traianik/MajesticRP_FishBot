@@ -6,6 +6,7 @@ from PIL import ImageGrab
 import pydirectinput
 import mss
 import keyboard
+import datetime
 # cv2.imshow('fish', fish_img)
 # cv2.waitKey()
 # cv2.destroyAllWindows()
@@ -48,9 +49,9 @@ def gather_fish(run:bool):
 
 
 
-  #fish_img = cv2.imread('images/fish.png') #fish 1,  11 third person
+  fish_img = cv2.imread('images/fish.png') #fish 1,  11 third person
   #fish_img = cv2.imread('images/fishPhotoshop.png') #11 photoshop first pirson  
-  fish_img = cv2.imread('images/photoshop-test1.png') #fish 7-8   
+  #fish_img = cv2.imread('images/photoshop-test1.png') #fish 7-8   
   uderjivatee = cv2.imread('images/lkm.png') 
 
   w = fish_img.shape[1]
@@ -86,7 +87,7 @@ def gather_fish(run:bool):
           i = i + 1
           if i >= 2:
               if old_loc != None:
-                  print("Fish este",max_loc)  
+                  print("Fish detected",max_loc)  
                   
                   if(old_loc<max_loc): 
                           print("Right")  
@@ -153,9 +154,9 @@ def gather_fish(run:bool):
           pydirectinput.keyUp('a')  
           pydirectinput.keyUp('d') 
           pyautogui.mouseDown()
-          #time.sleep(17)  #pos 1 ,
+          time.sleep(17)  #pos 1 ,
           #time.sleep(11)  #pos 11
-          time.sleep(19) # pos 7-8
+          #time.sleep(19) # pos 7-8
           
           pyautogui.mouseUp()
           pydirectinput.press('e') 
@@ -163,7 +164,7 @@ def gather_fish(run:bool):
           pressed = 'no' 
           old = 0
           i = 0 
-
+          time_nr = 0
 
           directionfish = None
           print("Waiting for a new fish...")
@@ -173,6 +174,18 @@ def gather_fish(run:bool):
       print('FPS: {}'.format(1 / (time.time() - loop_time)))
       loop_time = time.time() 
       
+
+      now = datetime.datetime.now()
+      if now - last > datetime.timedelta(seconds=1):
+        last = now
+        time_nr += 1
+        if time_nr > 80:
+            pydirectinput.keyUp('a')  
+            pydirectinput.keyUp('d') 
+            pyautogui.mouseUp()
+            print("fish not found after 80 seconds! breaking the loop!")
+            break
+
       cv2.waitKey(1)
       if keyboard.is_pressed('q'):
           cv2.destroyAllWindows() 

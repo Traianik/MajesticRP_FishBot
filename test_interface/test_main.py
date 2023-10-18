@@ -23,11 +23,11 @@ import datetime
 
 # initialize the WindowCapture class
 # wincap = WindowCapture('LOC2.jpg - Paint')
-wincap = WindowCapture('RАGЕ Multiplaуer   ')   
+wincap = WindowCapture()   
 # initialize the Vision class
 #test = Vision('images/fishPhotoshop.jpg')  
 loc1 = Vision('images/fishPhotoshop.jpg')  
-loc2 = Vision('images/loc2.jpg') 
+loc2 = Vision('images/loc2.jpg')  
 
 # initialize the trackbar window
 # vision_limestone.init_control_gui()
@@ -213,7 +213,7 @@ def gather_fish(location,threshhold):
 print('Done.') 
 
 
-gather_fish(2,0.75)
+gather_fish(1,0.7)
 
 
 
