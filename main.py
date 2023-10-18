@@ -20,12 +20,14 @@ if __name__ == "__main__":
   customtkinter.set_default_color_theme("green")
 
   root = customtkinter.CTk()
-  root.geometry("500x350")
+  root.geometry("500x350") 
+  root.title("Traianik Majestic Fish Bot")
 
   frame = customtkinter.CTkFrame(master=root)
   frame.pack(pady=20,padx=60,fill="both", expand=True)
 
-  label = customtkinter.CTkLabel(master=frame, text="Majestic Bot Interface")
+
+  label = customtkinter.CTkLabel(master=frame, text="Majestic Fish Bot")
   label.pack(pady=12, padx=10)
 
   # entry1 = customtkinter.CTkEntry(master=frame, placeholder_text="Username")

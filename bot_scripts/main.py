@@ -68,6 +68,9 @@ def gather_fish(run:bool):
   start = None
   window = None
   fcount = 0
+  start_time = datetime.datetime.now()
+  last = start_time
+  time_nr = 0 
   loop_time = time.time()
 
   while run:
